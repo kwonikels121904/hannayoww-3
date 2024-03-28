@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Hannayowww </title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 850px;
+    margin: 0;
+    font-family: Times New Roman, serif;
+  }
+  
+  .heart {
+    cursor: pointer;
+    font-size: 40px; 
+    color: purple;
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 17px;
+    color: #333; 
+  }
+
+  .confession {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    white-space: pre-line;
+    overflow: hidden;
+    position: relative;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+.next-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: purple;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none;
+    position: relative;
+    margin-top: 20px; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}
+</style>
+</head>
+<body>
+
+<div class="heart">&#10084;</div>
+<div class="text" id="clickText">CLICK MO TANGA!!</div>
+
+<div id="confession" class="confession"></div>
+
+<script>
+document.querySelector('.heart').addEventListener('click', showConfession);
+
+function showConfession() {
+  var heartSymbol = document.querySelector('.heart');
+  var clickText = document.getElementById('clickText');
+  var confessionDiv = document.getElementById("confession");
+  var nextButton = document.createElement("button");
+
+  heartSymbol.style.display = "none";
+  clickText.style.display = "none";
+
+  confessionDiv.innerHTML = "";
+  confessionDiv.style.display = "block";
+
+  var confessionText = "Una sa lahat, gusto kong magpasalamat sa pagmamahal at sa lahat ng mga effort na \nipinaparamdam mo sa akin. Sobrang na-appreciate ko lahat ng mga ginagawa mo, lalo \nna 'yung pagpapakita mo ng interes na makasama at makita ako, pati na rin 'yung tiwala \nna binigay mo sa akin.";
+  // Add more sentences below
+  confessionText += "\n\n Nung una, parang nawalan ako ng direksyon sa buhay dahil sa sobrang hirap na pinagdaanan ko. \nAng buhay ko noon, sobrang miserable, tipong hindi ko na alam kung paano haharapin ang bawat \naraw dahil sa sobrang bigat ng nararamdaman ko. Pakiramdam ko, nag-iisa na lang ako sa mundo. \nLalo na’t ang mismong pamilya ko pa ang pumapatay sa nararamdaman ko.";
+  confessionText += "\n\n Hanna, simula nung nakilala kita, nagbago ang lahat ng pananaw ko at maraming bagay ang nagbago sa akin, \nlalo na sa nararamdaman ko. Alam ko na marami akong pagkakamali sa mga desisyon na ginawa ko noon, pero \nlahat ng iyon ay binago ko para sa iyo. Pinili kong baguhin ang sarili ko at mag-improve, hanggang sa makita mo \nang halaga ko at ang mga pagbabago na ginawa ko para sayo. Gusto kong maging masaya, at ngayon, ito na ako, \nmasaya at nagmamahal sa iyo.";
+  var index = 0;
+  confessionDiv.style.display = "block";
+  var typingInterval = setInterval(function() {
+    if (index < confessionText.length) {
+      confessionDiv.innerHTML += confessionText.charAt(index);
+      index++;
+    } else {
+      clearInterval(typingInterval);
+      nextButton.innerHTML = "Next";
+      nextButton.classList.add("next-button");
+      nextButton.addEventListener('click', showNextConfession);
+      confessionDiv.appendChild(nextButton);
+      nextButton.style.display = "block"; // Display the button
+    }
+  }, 50); // Typing speed
+}
+
+function showNextConfession() {
+  var confessionDiv = document.getElementById("confession");
+  var nextButton = document.querySelector('.next-button');
+
+  var confessionText = "Monday April 10, 2023\n\nNoong unang beses kitang makita, pinagmamasdan kita habang nasa table ka ni Sir Arthur. Nag observe ako sa mga \nkilos mo at napapatingin ako sa kagandahan mo. Oo, aaminin ko na kinikilig na ako sa mga panahong ‘yon.";
+
+  // Additional confession text for the next page
+  confessionText += "\n\nTuesday April 11, 2023\n\nNaging curious ako sa pangalan mo kaya minsan iniabangan ko na tawagin ka nila gamit ang pangalan mo. Hanggang sa \nnakita ko sa wifi ang 'HOTSPOT NI HANNAH.' Doon ko naisipang hanapin ang pangalan mo sa Facebook, pero maraming \nlumabas at wala akong nakitang mga pictures mo. Buong hapon ko ‘yon nainisa-isa ang mga Jhoana, Joana, Hannah, at \nHanna na pangalan pati na sa mga secret files ng SPIST noon, pero wala talaga.";
+
+  // Additional confession text for Wednesday April 12, 2023
+  confessionText += "\n\nWednesday April 12, 2023\n\nSimula pag-gising ko, ikaw na agad ang nasa isip ko. Hindi ko na maintindihan kung bakit, pero tuwing wala ka, parang hinahanap-hanap kaagad ng mga mata ko. Pagpasok ko sa IT department, ikaw na agad ang hinahanap-hanap ko. Hanggang sa dumating ka, at doon ako naging masaya. Hinanap ko ulit ang pangalan mo sa G Suite ng SPIST, sinubukan ko lahat ng mga posibleng pangalan mo tulad ng Jhoana, Johanna, Hannah, Hanna, pero wala pa rin talaga. Hanggang sa hindi ko na napigilan ang sarili ko at inamin ko na kay Lance noon. Inasar na nila ako at sinabi kay Sir Jeric ‘yon. Nang dumating ka at may dala kang chichirya, tinanong ka ni Sir Jeric kung ano ang pangalan mo at sinagot mo ng 'Johanna po.' Simula noon, napa ngiti na ako at naramdaman ko na yung kilig sa iyo. Madalas na rin tayong nagkaka tinginan tuwing dumaan ako sa table ni Sir Kevin. At doon, nabanggit na nila ang apelyido mo na 'Ramos,' kaya sinubukan kong i-search sa Facebook at nakita ko ang 'Jhoanna Ramos.' Nalungkot ako dahil totoo pala ang sinabi ni Sir na may boyfriend ka, at nakita ko ‘yon sa cover photo ni Jhoanna.";
+  // Additional confession text for Thursday April 13, 2023
+  confessionText += "\n\nThursday April 13, 2023\n\nNaging masaya ako nang makilala kita, pero biglang naging malungkot nanaman ako nang malaman kung may boyfriend ka na pala. Nakatulala na lang ako sa upuan, ngunit tuwing wala ka, hinahanap-hanap pa rin kita. Habang nag-aantay ako sa likod ng pinto matapos kaming mag check ni Carlo sa pinagawa sa amin, bigla pumasok ka at nag ka titigan tayo. kinilig ako ng sobra nun, at hindi ko alam kung bakit, after 4 years na wala akong nararamdaman na o nawalan na ako ng gana magmahal, hindi ko inaasahan na kikiligin ako ulit sayo. sunod nito, lumapit ulit si Sir Jeric at ipinakita sa akin ang mismong account mo, kaya nagtaka ako dahil baka hindi ikaw yung Jhoanna Ramos dahil dun sa pangalan na ipinakita niya na Johanna Ramos. kaya bumalik na naman yung saya na nararamdaman ko. Tinulungan niyo rin kami magdala ng mga mabibigat na box na may laman na papel, at sa unang pagkakataon, nahawakan ko ‘yang mga kamay mo. Naalala ko pa ang sinabi ko, Hala, si ate na nagdala., Ate, ako na po. At ‘yon ang unang araw na nahawakan ko ‘yang mga kamay mo.";
+  // Additional confession text for Friday April 14, 2023
+  confessionText += "\n\nFriday April 14, 2023\n\nHuling araw niyo sa IT department, at simula noong araw na iyon, naging malungkot ako dahil hindi na kita makakasama sa OJT. Umupo na lang ako sa tabi ni Sir Kevin, nakikinig, nag-oobserve, at hinahanap ka. Nakita kita sa huling upo mo sa table ni Sir Arthur, may ginagawa ka, at ‘yon rin sa unang pagkakataon na matitigan kita ng naka salamin ako. Nasa tabi ako ng water dispenser, tinitingnan ko ang ‘yang kagandahan mo, at doon ko naramdaman na nagkakagusto na ako sayo. Hanggang sa pa tapos na ang oras nating magkasama sa iisang departament. Napansin ni Jerome na malungkot ako, kaya sinabi ni Geoff kay Sir  at bigla kang tinawag. Doon ko unang nasabi sa’yo ang pag papaalam ko at sa araw na ‘yan ang una nating pag-holding hands. Dinala ko ‘yan hanggang sa pag-uwi ko. Naging weird ako hanggang pagdating sa bahay dahil nakatingin lang ako sa kamay ko hanggang sa paghiga sa kama. Pinag-isipan ko kung mag friend request ba ako sa Facebook dahil alam ko na ang iyong account. Nagtanong ako sa group chat kung itutuloy ko ba pag friend request ko sayo dahil  hiyang-hiya ako, pero naisip ko na wala namang mawawala kung hindi mo ako i-aaccept dahil hindi mo rin naman ako kilala. Kaya sinubukan ko na lang i-add ka habang i-noof ko ang lahat ng notification, pati na rin yung wifi. Habang ginagawa ko ‘yon, bigla mo akong inaccept. Kung alam mo lang, ‘yon ang unang araw na muli akong nakaramdam ng matinding saya at kilig na tumagal hanggang sa ngayon, kasalukuyan. at ‘yon din ang araw na minahal kita sa paraan na ako lang ang nakaka alam.";
+
+  var index = 0;
+  confessionDiv.innerHTML = ""; // Clear previous confession text
+  var typingInterval = setInterval(function() {
+    if (index < confessionText.length) {
+      confessionDiv.innerHTML += confessionText.charAt(index);
+      index++;
+    } else {
+      clearInterval(typingInterval);
+      nextButton.style.display = "none"; // Hide the "Next" button for the second confession
+      // Create and append another button for the next page
+      var nextButton2 = document.createElement("button");
+      nextButton2.innerHTML = "Next Page";
+      nextButton2.classList.add("next-button");
+      nextButton2.addEventListener('click', showNextConfession2);
+      confessionDiv.appendChild(nextButton2);
+      nextButton2.style.display = "block"; // Display the button
+    }
+  }, 50); // Typing speed
+}
+
+function showNextConfession2() {
+  var confessionDiv = document.getElementById("confession");
+  var nextButton = document.querySelector('.next-button');
+
+  var confessionText = "Saturday June 3, 2023\n\nIsa ito sa mga araw na hindi ko malilimutan dahil sa araw na ‘to, mag kasabay tayong grumaduate sa senior high. Masaya ako pero may lungkot na nararamdaman. Masaya ako sa araw na ‘yan dahil ayan ang una nating beses na nag picture, nalulungkot ako dahil akala ko ito na ang huling pagkakataon nating magkita dahil magkaiba na tayo ng papasukan. Sa university ako, at sa private school ka. pero hindi ko inaasahan na sa mga darating na araw, magkikita pa rin tayo. hindi ko rin pala natuloy ang pag yakap sa’yo noong araw na ‘yon dahil iniisip ko na baka may ibang gusto ka at hindi ako. pero gustong gusto kitang yakapin noong araw na ‘yon dahil gusto kong iparamdam sa iyo na minahal na kita nung una pa lamang.";
+  // Additional confession text for the next page
+  confessionText += "\n\nFriday September 8, 2023\n\nPinaghandaan ko ang araw na ‘to dahil alam kong napaka espesyal nitong araw na ‘to para sa’yo, kaarawan mo. sunod na araw ng pagpunta ko. July pa lang bumili na ako ng mga regalo ko sa’yo. Pang una, na isip ko yung crochet flower dahil sabi mo gusto mo ‘yon. Pangalawa, yung racoon kasi tatlong beses mo naging profile picture ‘yon sa facebook. Pangatlo, yung ice cream cake dahil favorite ko yon at ni recommend ko sa’yo at sabi mo hindi mo pa na titikman kaya binili ko. masaya ako dahil isa ako sa mga taong humahanga sa’yo, Hanna. Sa araw na ‘yon, dapat sana mag coconfess ako personally sa nararamdaman ko sayo, ngunit mas pinili ko nalang na i-tago muna ang nararamdaman ko kaya umalis ako agad dahil na takot ako na baka may iba kang gusto at hindi ako. Hindi ko agad na sabi sayo yung nararamdaman ko dahil takot akong layuan mo. Mahal na mahal kita, Hanna, higit pa sa pagmamahal sa sarili ko. Gusto ko alagaan, mahalin, protektahan, at maging kasama ka sa habang buhay.";
+  confessionText += "\n\nWednesday February 14, 2024\n\nIto ang araw kung kailan pinayagan mo na akong ligawan ka at sabihin ang totoong nararamdaman ko sa’yo. gusto kong maging aware ka sa akin bilang isang parte ng buhay ko. Ikaw lang ang mamahalin ko at gusto kong alagaan, protektahan, at maging kasama habang-buhay, higit sa lahat, gusto kong maging boyfriend mo. minahal kita ng sobra at handa akong iparamdam sayo palagi ‘tong pagmamahal ko. wag mong isipin na pansamantala lang ang nararamdaman ko sayo dahil ang lahat ng ‘to, totoo. deserve mo lahat ng mga efforts at pagmamahal na ibinibigay ko. <3.";
+  confessionText += "\n\nThursday March 14, 2024\n\n First Kiss BWHAHAHAHAHAHA";
+  confessionText += "\n\n\n\n\n\n\n\n\n Hanna, will u be my memory??";
+  var index = 0;
+  confessionDiv.innerHTML = ""; // Clear previous confession text
+  var typingInterval = setInterval(function() {
+    if (index < confessionText.length) {
+      confessionDiv.innerHTML += confessionText.charAt(index);
+      index++;
+    } else {
+      clearInterval(typingInterval);
+      nextButton.style.display = "none"; // Hide the "Next Page" button for the third confession
+    }
+  }, 50); // Typing speed
+}
+</script>
+</body>
+</html>
